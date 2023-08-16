@@ -1,0 +1,29 @@
+{
+    "bail": 1,
+    "verbose": true,
+    "moduleFileExtensions": ["js", "json", "ts"],
+    "rootDir": "./",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+        "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+        "<rootDir>/src/**/*.(t|j)s"
+    ],
+    "coverageDirectory": "<rootDir>/coverage/",
+    "coverageThreshold": {
+        "global": {
+            "branches": 75,
+            "functions": 75,
+            "lines": 75,
+            "statements": 75
+        }
+    },
+    "coveragePathIgnorePatterns": [
+        "index.(t|j)s",
+        "types.ts",
+        "<rootDir>/src/index.(t|j)s"
+    ],
+    "collectCoverage": true,
+    "testEnvironment": "node"
+}
