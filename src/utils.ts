@@ -169,8 +169,9 @@ export function areEqual<T = unknown>(
         return value1 === value2;
       }
       if (Array.isArray(value1) && Array.isArray(value2)) {
-        return value2.every((value, index) =>
-          areEqual(value, value1[index], trimWhiteSpace, ignoreCase)
+        return (
+          value1.length === value2.length &&
+          value2.every((value, index) => areEqual(value, value1[index], trimWhiteSpace, ignoreCase))
         );
       } else if (
         (Array.isArray(value1) && !Array.isArray(value2)) ||
@@ -181,8 +182,9 @@ export function areEqual<T = unknown>(
         const v1 = value1 as unknown as Record<string, unknown>;
         const v2 = value2 as unknown as Record<string, unknown>;
         const keys = Object.keys(v1);
-        return keys.every((key) =>
-          areEqual(v1[key], v2[key], trimWhiteSpace, ignoreCase)
+        return (
+          keys.length === Object.keys(v2).length &&
+          keys.every((key) => areEqual(v1[key], v2[key], trimWhiteSpace, ignoreCase))
         );
       }
     default:
